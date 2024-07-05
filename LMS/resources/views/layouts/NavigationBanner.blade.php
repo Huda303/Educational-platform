@@ -15,10 +15,10 @@
         </li>
     </ul>
     <ul class = "flex m-4 gap-10 ml-auto mr-20">
-        <li class = "p-2"> <a class = "font-medium"  href="#">Home</a> </li>
-        <li class = "p-2"> <a class = "font-medium"  href="#">Coures</a> </li>
+        <li class = "p-2"> <a class = "font-medium"  href="{{ route('dashboard') }}">Home</a> </li>
+        <li class = "p-2"> <a class = "font-medium"  href="">Coures</a> </li>
         <li class = "p-2"> <a class = "font-medium"  href="#">My enrolments</a> </li>
-        <li class = "p-2"> <a class = "font-medium"  href="#">Profile</a></li>
+        <li class = "p-2"> <a class = "font-medium"  href="{{ route('profile.edit') }}">Profile</a></li>
     </ul>
     <ul class = "flex m-4 mr-10">
         <li class = "p-2">
