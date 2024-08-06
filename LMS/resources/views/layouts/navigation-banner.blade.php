@@ -16,9 +16,22 @@
     </ul>
     <ul class = "flex m-4 gap-10 ml-auto mr-20">
         <li class = "p-2"> <a class = "font-medium"  href="{{ route('dashboard') }}">Home</a> </li>
-        <li class = "p-2"> <a class = "font-medium"  href="">Coures</a> </li>
+        <li class = "p-2"> <a class = "font-medium"  href="{{ route('categories') }}">Categories</a> </li>
+         @if(auth()->user())
+         @if(Route::has('login'))
         <li class = "p-2"> <a class = "font-medium"  href="#">My enrolments</a> </li>
         <li class = "p-2"> <a class = "font-medium"  href="{{ route('profile.edit') }}">Profile</a></li>
+        @endif
+        @else        
+        <a href="{{ route('login') }}" class="rounded-md font-medium px-3 py-2 text-black ring-1 ring-transparent transition focus:outline-none focus-visible:ring-[#FF2D20]">
+            Log in
+        </a>
+        @if (Route::has('register'))
+        <a href="{{ route('register') }}" class="rounded-md px-3 font-medium py-2 text-black ring-1 ring-transparent transition focus:outline-none focus-visible:ring-[#FF2D20]">
+            Register
+        </a>
+        @endif
+        @endif
     </ul>
     <ul class = "flex m-4 mr-10">
         <li class = "p-2">

@@ -2,16 +2,22 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\CategoryController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/home', function () {
-    return view('User/UserDashboard');
-});
+
+
+// Route::get('/', [PagesController::class, 'GuestHome']);
+    // user dashboard
+Route::get('/', [PageController::class, 'Home'])->name('home');
+Route::get('/categories', [PageController::class, 'categories'])->name('categories');
+Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('get.category');
+Route::get('/categories/courses', [PageController::class, 'courses'])->name('courses');
+
+ 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('User/dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

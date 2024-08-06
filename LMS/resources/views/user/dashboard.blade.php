@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body class = "bg-[#eeeeee]">
-    @include('layouts.NavigationBanner')
-    @include('layouts.Content')
+    @include('layouts.navigation-banner')
+    @include('layouts.content')    
 </body>
 </html>
