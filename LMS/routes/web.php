@@ -14,7 +14,7 @@ Route::get('/categories', [PageController::class, 'categories'])->name('categori
 Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('get.category');
 Route::get('/categories/courses', [PageController::class, 'courses'])->name('courses');
 
- 
+Route::post('/profile/switch-role', [ProfileController::class, 'switchRole'])->name('profile.switch-role');
 
 Route::get('/dashboard', function () {
     return view('User/dashboard');
