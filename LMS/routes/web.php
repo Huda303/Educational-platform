@@ -14,11 +14,13 @@ Route::get('/categories', [PageController::class, 'categories'])->name('categori
 Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('get.category');
 Route::get('/categories/courses', [PageController::class, 'courses'])->name('courses');
 
- 
+Route::post('/profile/switch-role', [ProfileController::class, 'switchRole'])->name('profile.switch-role');
 
 Route::get('/dashboard', function () {
     return view('User/dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+route::get('/profile/insetructorDash', [PageController::class, 'insetructorDash'])->name('insetructorDash');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

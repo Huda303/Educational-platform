@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers;
 
@@ -11,19 +11,16 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
+
     public function edit(Request $request): View
     {
         return view('profile.edit', [
             'user' => $request->user(),
+            'role' => $request->user()->role, // Pass the user role to the view
         ]);
     }
 
-    /**
-     * Update the user's profile information.
-     */
+
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
@@ -37,9 +34,18 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
-    /**
-     * Delete the user's account.
+     /**
+     * Switch the user's role.
      */
+    public function switchRole(Request $request): RedirectResponse
+    {
+        $user = $request->user();
+        $user->role = $user->role === 'instructor' ? 'user' : 'instructor';
+        $user->save();
+
+        return Redirect::route('profile.edit')->with('status', 'role-switched');
+    }
+    
     public function destroy(Request $request): RedirectResponse
     {
         $request->validateWithBag('userDeletion', [
