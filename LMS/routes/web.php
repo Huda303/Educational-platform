@@ -20,6 +20,8 @@ Route::get('/dashboard', function () {
     return view('User/dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+route::get('/profile/insetructorDash', [PageController::class, 'insetructorDash'])->name('insetructorDash');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

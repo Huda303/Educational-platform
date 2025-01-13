@@ -23,5 +23,9 @@ class PageController extends Controller
    public function courses(){
       return view('layouts.courses');
    }
+   public function insetructorDash(){
+      return view('layouts.manage-courses');
+   }
+
 
 }
