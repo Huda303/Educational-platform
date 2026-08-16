@@ -35,7 +35,7 @@ return new class extends Migration
             $table->text('user_agent')->nullable();
             $table->longText('payload');
             $table->integer('last_activity')->index();
-            $table->string('role')->default('user')->after('password'); // Add this line
+            $table->string('role')->default('user');
             $table->timestamps();
             $table->rememberToken();
         });
@@ -46,10 +46,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role');
-        });
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('users');
     }
 };
